@@ -37,6 +37,11 @@ inoremap ` ``<Esc>ha
 "altenative for esc 
 :imap jk <Esc>
 
+"change the line number coloring
+hi LineNrAbove guifg=grey ctermfg=grey
+hi LineNrBelow guifg=grey ctermfg=grey
+:highlight LineNr ctermfg=yellow
+
 
 " Copy the current buffer's path to your clipboard.
 nmap cp :let @+ = expand("%")<CR>
