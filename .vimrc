@@ -1,3 +1,4 @@
+
 filetype on
 filetype indent on
 syntax enable
@@ -20,14 +21,15 @@ set autoindent
 set mouse=a
 set background=dark " for the dark version
 " set background=light " for the light version
-colorscheme monokai 
+"colorscheme monokai 
+:colorscheme jellybeans
 
 "paste in newline
 :nmap p :pu<CR>
 
 
 "Brace completion
-inoremap { {<CR>}<Esc>ko
+inoremap {<CR> {<CR>}<Esc>ko
 inoremap ( ()<Esc>ha
 inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
@@ -50,3 +52,22 @@ set clipboard=unnamedplus
 
 "terminal colors 256 for rxvt
 set t_Co=256 
+
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+	Plug 'preservim/nerdtree'
+call plug#end()
+
+
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
